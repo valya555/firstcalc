@@ -1,16 +1,23 @@
 
+# calculation functions
+
 def returnAdd(num1,num2):
     return num1 + num2
+
 def returnSub(num1,num2):
     return num1 - num2
+
 def returnMul(num1,num2):
     return num1 * num2
+
 def returnDiv(num1,num2):
     return num1 / num2
+
 def returnPow(num1,num2):
     return num1 ** num2
 
 
+# function checks the validity of the operation and return the result if the operation is valid
 def calc(num1, num2, operator):
     res = 0
     flag = 0
@@ -23,18 +30,26 @@ def calc(num1, num2, operator):
         elif operator == "*":
             res = returnMul(int(num1), int(num2))
         elif operator == "/":
-            res = returnDiv(int(num1), int(num2))
+            if int(num2) == 0:
+                flag = 0
+            else:
+                res = returnDiv(int(num1), int(num2))
         elif operator == "^":
-            res = returnPow(int(num1), int(num2))
+            if int(num2) < 100:
+                res = returnPow(int(num1), int(num2))
+            else:
+                flag = 0
     return flag, res
 
+
+# interface for the
 def calcInterface():
     cont = "1"
     print("Calculator ")
     print("____________")
     print(" choose operation : \n + = addition \n - = subtraction \n * = multiplication \n / = divination \n ** = power \n ")
     print("____________________________________________")
-    num1, num2 = 0,0
+    num1, num2 = 0, 0
     operand = ""
     flag1, res1 = 0, 0
     while cont == "1":
@@ -53,11 +68,12 @@ def calcInterface():
         cont = input("would you like to continue ? enter 0 for no, 1 for yes.")
         while cont != "0" and cont != "1":
             cont = input("invalid value. \nwould you like to continue ? enter 0 for no, 1 for yes. ")
-
     return
+
 
 def main():
     calcInterface()
+
 
 if __name__ == "__main__":
     main()
